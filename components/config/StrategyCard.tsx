@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Settings, ChevronDown, Star } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Settings, ChevronDown, Star, Trash2 } from 'lucide-react';
 import { Strategy } from '@/data/types';
 import { useStrategy } from '@/contexts/StrategyContext';
 
@@ -9,15 +9,69 @@ interface StrategyCardProps {
   strategy: Strategy;
 }
 
+// Helper to create a snapshot of strategy values for comparison
+const getStrategySnapshot = (strategy: Strategy) => ({
+  name: strategy.name,
+  subtitle: strategy.subtitle,
+  startingPrice: strategy.startingPrice,
+  adjustmentTime: strategy.adjustmentTime,
+  maxUnits: strategy.maxUnits,
+  maxReduction: strategy.maxReduction,
+  fallbackTime: strategy.fallbackTime,
+});
+
 export default function StrategyCard({ strategy }: StrategyCardProps) {
-  const { updateStrategy, toggleStrategyExpanded } = useStrategy();
+  const { updateStrategy, deleteStrategy, toggleStrategyExpanded } = useStrategy();
+  
+  // Store the "saved" snapshot to compare against
+  const [savedSnapshot, setSavedSnapshot] = useState(() => getStrategySnapshot(strategy));
+  
+  // Track if there are unsaved changes
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+
+  // Check for changes whenever strategy updates
+  const checkForChanges = useCallback(() => {
+    const current = getStrategySnapshot(strategy);
+    const hasChanges = 
+      current.name !== savedSnapshot.name ||
+      current.subtitle !== savedSnapshot.subtitle ||
+      current.startingPrice !== savedSnapshot.startingPrice ||
+      current.adjustmentTime !== savedSnapshot.adjustmentTime ||
+      current.maxUnits !== savedSnapshot.maxUnits ||
+      current.maxReduction !== savedSnapshot.maxReduction ||
+      current.fallbackTime !== savedSnapshot.fallbackTime;
+    
+    setHasUnsavedChanges(hasChanges);
+  }, [strategy, savedSnapshot]);
+
+  useEffect(() => {
+    checkForChanges();
+  }, [checkForChanges]);
+
+  // Reset snapshot when card is expanded (to track changes from this point)
+  useEffect(() => {
+    if (strategy.isExpanded) {
+      setSavedSnapshot(getStrategySnapshot(strategy));
+      setHasUnsavedChanges(false);
+    }
+  }, [strategy.isExpanded]);
 
   const handleFieldChange = (field: keyof Strategy, value: string | number) => {
     updateStrategy(strategy.id, { [field]: value });
   };
 
+  const handleSave = () => {
+    // Update the saved snapshot to current values
+    setSavedSnapshot(getStrategySnapshot(strategy));
+    setHasUnsavedChanges(false);
+  };
+
+  const handleDelete = () => {
+    deleteStrategy(strategy.id);
+  };
+
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden mb-3">
+    <div className="border border-gray-200 rounded-lg overflow-hidden">
       {/* Header */}
       <button
         onClick={() => toggleStrategyExpanded(strategy.id)}
@@ -38,6 +92,18 @@ export default function StrategyCard({ strategy }: StrategyCardProps) {
       {/* Expanded Content */}
       {strategy.isExpanded && (
         <div className="p-4 border-t border-gray-200 space-y-4">
+          {/* Logic Name (editable) */}
+          <div>
+            <label className="block text-xs text-gray-500 mb-1">Logic Name</label>
+            <input
+              type="text"
+              value={strategy.name}
+              onChange={(e) => handleFieldChange('name', e.target.value)}
+              className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm font-medium focus:outline-none focus:border-primary"
+              placeholder="Enter logic name"
+            />
+          </div>
+
           {/* Starting Price */}
           <div>
             <label className="block text-xs text-gray-500 mb-1">Starting Price(₹)</label>
@@ -98,6 +164,28 @@ export default function StrategyCard({ strategy }: StrategyCardProps) {
           <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg text-sm text-gray-700">
             <Star size={16} className="text-yellow-500" />
             <span>Sell to SG @ ₹ 5.5 / kwh on fallback</span>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+            <button
+              onClick={handleDelete}
+              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+            >
+              <Trash2 size={16} />
+              Delete
+            </button>
+            <button
+              onClick={handleSave}
+              disabled={!hasUnsavedChanges}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                hasUnsavedChanges
+                  ? 'bg-primary text-white hover:bg-primary-dark'
+                  : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              }`}
+            >
+              Save
+            </button>
           </div>
         </div>
       )}

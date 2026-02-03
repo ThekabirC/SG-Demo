@@ -8,6 +8,7 @@ interface StrategyContextType {
   strategies: Strategy[];
   addStrategy: (strategy: Strategy) => void;
   updateStrategy: (id: string, updates: Partial<Strategy>) => void;
+  deleteStrategy: (id: string) => void;
   toggleStrategyExpanded: (id: string) => void;
   getStrategyById: (id: string) => Strategy | undefined;
   getStrategyDisplayName: (id: string) => string;
@@ -26,6 +27,10 @@ export function StrategyProvider({ children }: { children: ReactNode }) {
     setStrategies((prev) =>
       prev.map((s) => (s.id === id ? { ...s, ...updates } : s))
     );
+  };
+
+  const deleteStrategy = (id: string) => {
+    setStrategies((prev) => prev.filter((s) => s.id !== id));
   };
 
   const toggleStrategyExpanded = (id: string) => {
@@ -49,6 +54,7 @@ export function StrategyProvider({ children }: { children: ReactNode }) {
         strategies,
         addStrategy,
         updateStrategy,
+        deleteStrategy,
         toggleStrategyExpanded,
         getStrategyById,
         getStrategyDisplayName,

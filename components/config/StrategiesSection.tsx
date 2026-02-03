@@ -29,7 +29,7 @@ export default function StrategiesSection() {
       <h2 className="text-base font-semibold text-gray-900 mb-4">Strategies</h2>
 
       {/* Strategy Cards */}
-      <div className="space-y-0">
+      <div className="space-y-3">
         {strategies.map((strategy) => (
           <StrategyCard key={strategy.id} strategy={strategy} />
         ))}

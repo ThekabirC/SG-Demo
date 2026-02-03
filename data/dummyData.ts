@@ -2,6 +2,7 @@ import {
   Project,
   Trade,
   Bid,
+  TimeslotBids,
   HistoryItem,
   Strategy,
   GameplanRow,
@@ -52,20 +53,37 @@ export const tomorrowsTrades: Trade[] = [
   { id: '11', timeslot: '17 - 18', status: 'scheduled', units: 5.56, buyerId: '**OI3MN', rate: 8.10 },
 ];
 
-// Current Bids grouped by timeslot
-export const currentBids: Record<string, Bid[]> = {
-  '06:00 - 07:00': [
-    { id: '1', timeslot: '06:00 - 07:00', buyerId: '***EF7W3', rate: 7.25, units: 2.56, credits: -17.58 },
-  ],
-  '07:00 - 08:00': [
-    { id: '2', timeslot: '07:00 - 08:00', buyerId: '***VFB7W', rate: 5.42, units: 2.56, credits: -9.68, selected: true },
-    { id: '3', timeslot: '07:00 - 08:00', buyerId: '***EHY9R', rate: 7.25, units: 2.56, credits: -14.71 },
-    { id: '4', timeslot: '07:00 - 08:00', buyerId: '***EF7W3', rate: 7.25, units: 2.56, credits: -17.58 },
-    { id: '5', timeslot: '07:00 - 08:00', buyerId: '***VFB7W', rate: 6.42, units: 2.56, credits: -9.68 },
-    { id: '6', timeslot: '07:00 - 08:00', buyerId: '***EHY9R', rate: 7.25, units: 2.56, credits: -14.71 },
-  ],
-  '08:00 - 09:00': [],
-};
+// Current Bids grouped by timeslot with max units configuration
+// maxUnits can be updated via API to set the limit per timeslot
+export const currentBidsData: TimeslotBids[] = [
+  {
+    timeslot: '06:00 - 07:00',
+    maxUnits: 10, // API can provide this value
+    bids: [
+      { id: '1', timeslot: '06:00 - 07:00', buyerId: '***EF7W3', rate: 7.25, units: 2.56, credits: -17.58 },
+      { id: '2', timeslot: '06:00 - 07:00', buyerId: '***VFB7W', rate: 6.42, units: 2.56, credits: -9.68 },
+      { id: '3', timeslot: '06:00 - 07:00', buyerId: '***EHY9R', rate: 7.25, units: 2.56, credits: -14.71 },
+    ],
+  },
+  {
+    timeslot: '07:00 - 08:00',
+    maxUnits: 10, // API can provide this value
+    bids: [], // No bids available for this timeslot
+  },
+  {
+    timeslot: '08:00 - 09:00',
+    maxUnits: 10, // API can provide this value
+    bids: [
+      { id: '4', timeslot: '08:00 - 09:00', buyerId: '***EF7W3', rate: 7.25, units: 2.56, credits: -17.58 },
+      { id: '5', timeslot: '08:00 - 09:00', buyerId: '***VFB7W', rate: 6.42, units: 2.56, credits: -11.68 },
+      { id: '6', timeslot: '08:00 - 09:00', buyerId: '***EHY9R', rate: 7.25, units: 2.56, credits: -14.71 },
+      { id: '7', timeslot: '08:00 - 09:00', buyerId: '***EHY9R', rate: 7.25, units: 2.56, credits: -14.71 },
+      { id: '8', timeslot: '08:00 - 09:00', buyerId: '***EHY9R', rate: 7.25, units: 2.56, credits: -14.71 },
+      { id: '9', timeslot: '08:00 - 09:00', buyerId: '***EHY9R', rate: 7.25, units: 2.56, credits: -14.71 },
+      { id: '10', timeslot: '08:00 - 09:00', buyerId: '***EHY9R', rate: 7.25, units: 1.00, credits: -14.71 },
+    ],
+  },
+];
 
 // History
 export const historyData: HistoryItem[] = [
@@ -102,17 +120,7 @@ export const strategies: Strategy[] = [
     fallbackTime: '07:00 PM',
     isExpanded: true,
   },
-  {
-    id: '3',
-    name: 'Calculus 2',
-    subtitle: 'Advanced',
-    startingPrice: 7.0,
-    adjustmentTime: 90,
-    maxUnits: 15,
-    maxReduction: 25,
-    fallbackTime: '06:00 PM',
-    isExpanded: false,
-  },
+
 ];
 
 // Gameplan

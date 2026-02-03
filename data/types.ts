@@ -25,7 +25,13 @@ export interface Bid {
   rate: number;
   units: number;
   credits: number;
-  selected?: boolean;
+}
+
+// Timeslot Bids configuration (for API integration)
+export interface TimeslotBids {
+  timeslot: string;
+  maxUnits: number;  // Maximum units that can be selected for this timeslot
+  bids: Bid[];
 }
 
 // History types
