@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ArrowLeftRight, SlidersHorizontal, User } from 'lucide-react';
+import { ArrowLeftRight, Sparkles, User } from 'lucide-react';
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -49,14 +49,15 @@ export default function Sidebar() {
               : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'
           }`}
         >
-          <SlidersHorizontal size={20} />
+          <Sparkles size={20} />
           {isConfigActive && (
             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-primary rounded-l-full" />
           )}
         </Link>
       </nav>
 
-      {/* User Icon 
+      {/* User Icon */}
+      {/*
       <div className="mt-auto mb-2">
         <button className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white hover:bg-primary-dark transition-colors">
           <User size={18} />
@@ -64,6 +65,6 @@ export default function Sidebar() {
       </div>
       */}
     </aside>
-
+    
   );
 }

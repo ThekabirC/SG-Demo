@@ -18,7 +18,7 @@ export default function FileItem({ file, onToggle }: FileItemProps) {
         type="checkbox"
         checked={file.enabled}
         onChange={() => onToggle(file.id)}
-        className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
+        className="w-4 h-4 rounded border-gray-300 text-[#0F7066] focus:ring-[#0F7066] accent-[#0F7066] cursor-pointer"
       />
     </div>
   );

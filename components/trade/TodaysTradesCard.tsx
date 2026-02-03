@@ -23,11 +23,11 @@ export default function TodaysTradesCard() {
         <h2 className="text-base font-semibold text-gray-900">Today&apos;s Trades</h2>
         
         {/* Column Headers */}
-        <div className="flex items-center mt-4 text-xs text-gray-400 font-medium uppercase tracking-wide">
-          <div className="w-[70px]">Time Slot</div>
-          <div className="w-[90px]">Status</div>
-          <div className="w-[80px]">Units</div>
-          <div className="w-[90px]">Buyer ID</div>
+        <div className="flex items-center mt-4 text-xs text-gray-400 font-medium">
+          <div className="w-[80px]">Time Slot</div>
+          <div className="w-[100px]">Status</div>
+          <div className="w-[90px]">Units</div>
+          <div className="w-[100px]">Buyer ID</div>
           <div className="flex-1 text-right">Rate ₹/kWh</div>
         </div>
       </div>

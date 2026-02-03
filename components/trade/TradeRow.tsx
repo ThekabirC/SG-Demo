@@ -12,36 +12,38 @@ interface TradeRowProps {
 }
 
 export default function TradeRow({ trade, showTimeslot = true, isLastInGroup = false }: TradeRowProps) {
-  const isHighlighted = trade.status === 'ongoing' || trade.status === 'searching';
+  const isHighlightedai = trade.status === 'ai_check';
+  const isHighlighted = trade.status === 'in_progress';
   const unitsSubtext = getUnitsSubtext(trade.status);
 
   return (
     <div
       className={`
         flex items-center px-4 py-3 text-sm
+        ${isHighlightedai ? 'bg-purple-50 border border-purple-300 rounded-lg mx-2 my-1' : ''}
         ${isHighlighted ? 'bg-primary-50 border border-primary-300 rounded-lg mx-2 my-1' : ''}
         ${!isHighlighted && !isLastInGroup ? 'border-b border-gray-100' : ''}
         ${!isHighlighted && isLastInGroup ? 'border-b border-gray-300' : ''}
       `}
     >
       {/* Time Slot */}
-      <div className="w-[70px] font-medium text-gray-900">
+      <div className="w-[80px] font-medium text-gray-900">
         {showTimeslot ? trade.timeslot : ''}
       </div>
 
       {/* Status */}
-      <div className="w-[90px]">
+      <div className="w-[100px]">
         <StatusBadge status={trade.status} />
       </div>
 
       {/* Units */}
-      <div className="w-[80px]">
+      <div className="w-[90px]">
         <div className="font-medium text-gray-900">{trade.units.toFixed(2)} kWh</div>
         <div className="text-xs text-gray-500">{unitsSubtext}</div>
       </div>
 
       {/* Buyer ID */}
-      <div className="w-[90px] text-gray-700 font-mono text-xs">
+      <div className="w-[100px] text-gray-700 text-sm">
         {trade.buyerId}
       </div>
 

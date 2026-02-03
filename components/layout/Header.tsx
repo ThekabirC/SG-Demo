@@ -27,9 +27,9 @@ export default function Header() {
       {/* Add Project Button */}
       <button
         onClick={openAddProjectModal}
-        className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors ml-4 whitespace-nowrap"
+        className="flex items-center gap-2 px-4 py-2 text-[#2C2E38] hover:text-gray-900 transition-colors ml-4 whitespace-nowrap"
       >
-        <span className="text-sm font-medium">Add Project</span>
+        <span className="text-sm font-semibold">Add Project</span>
         <Plus size={18} />
       </button>
     </header>

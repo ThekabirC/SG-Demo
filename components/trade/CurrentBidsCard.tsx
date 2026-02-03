@@ -122,7 +122,7 @@ export default function CurrentBidsCard() {
                         </button>
                         <button
                           onClick={() => confirmSelection(timeslot)}
-                          className="px-4 py-1.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-dark transition-colors"
+                          className="px-4 py-1.5 bg-[#0B2742] text-[#44EBA7] text-sm font-medium rounded-lg hover:bg-primary-dark transition-colors"
                         >
                           Confirm
                         </button>
@@ -131,12 +131,12 @@ export default function CurrentBidsCard() {
                   )}
 
                   {/* Column Headers */}
-                  <div className="flex items-center px-4 py-2 text-xs text-gray-400 font-medium uppercase tracking-wide border-b border-gray-100">
-                    <div className="w-[90px]">Buyer ID</div>
-                    <div className="w-[80px]">
+                  <div className="flex items-center px-4 py-2 text-xs text-gray-400 font-medium border-b border-gray-100">
+                    <div className="w-[100px]">Buyer ID</div>
+                    <div className="w-[90px]">
                       Rate <span className="normal-case">₹/kWh</span>
                     </div>
-                    <div className="w-[80px]">Units</div>
+                    <div className="w-[90px]">Units</div>
                     <div className="flex-1 text-right">Credits</div>
                   </div>
 
@@ -159,12 +159,12 @@ export default function CurrentBidsCard() {
               ) : (
                 <>
                   {/* Column Headers for empty state */}
-                  <div className="flex items-center px-4 py-2 text-xs text-gray-400 font-medium uppercase tracking-wide border-b border-gray-100">
-                    <div className="w-[90px]">Buyer ID</div>
-                    <div className="w-[80px]">
+                  <div className="flex items-center px-4 py-2 text-xs text-gray-400 font-medium border-b border-gray-100">
+                    <div className="w-[100px]">Buyer ID</div>
+                    <div className="w-[90px]">
                       Rate <span className="normal-case">₹/kWh</span>
                     </div>
-                    <div className="w-[80px]">Units</div>
+                    <div className="w-[90px]">Units</div>
                     <div className="flex-1 text-right">Credits</div>
                   </div>
                   <div className="px-4 py-6 text-center text-sm text-gray-400 italic">
@@ -195,24 +195,24 @@ function BidRowItem({ bid, isSelected, canSelect, onToggle }: BidRowItemProps) {
       className={`
         flex items-center px-4 py-3 text-sm transition-all cursor-pointer
         ${isSelected 
-          ? 'bg-primary-50 border border-primary-300 rounded-lg mx-2 my-1' 
+          ? 'bg-[#E0F7ED] border border-primary-700 rounded-lg mx-2 my-1' 
           : 'border-b border-gray-100 hover:bg-gray-50'
         }
         ${!canSelect && !isSelected ? 'opacity-50 cursor-not-allowed' : ''}
       `}
     >
       {/* Buyer ID */}
-      <div className="w-[90px] text-gray-700 font-mono text-xs">
+      <div className="w-[100px] text-gray-700 font-mono text-xs">
         {bid.buyerId}
       </div>
 
       {/* Rate */}
-      <div className="w-[80px] font-medium text-gray-900">
+      <div className="w-[90px] font-medium text-gray-900">
         ₹{bid.rate.toFixed(2)}
       </div>
 
       {/* Units */}
-      <div className="w-[80px]">
+      <div className="w-[90px]">
         <div className="font-medium text-gray-900">{bid.units.toFixed(2)} kWh</div>
         <div className="text-xs text-gray-500">Pledged</div>
       </div>

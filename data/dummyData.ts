@@ -14,22 +14,22 @@ import {
 // Projects
 export const projects: Project[] = [
   { id: '1', name: 'Project 1' },
-  { id: '2', name: 'Mio 26', badge: 1 },
+  { id: '2', name: 'Mio 26'},
   { id: '3', name: 'Project 3' },
   { id: '4', name: 'Project 4' },
 ];
 
 // Today's Trades
 export const todaysTrades: Trade[] = [
-  { id: '1', timeslot: '06 - 07', status: 'completed', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
-  { id: '2', timeslot: '06 - 07', status: 'completed', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
-  { id: '3', timeslot: '06 - 07', status: 'completed', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
-  { id: '4', timeslot: '06 - 07', status: 'completed', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
-  { id: '5', timeslot: '07 - 08', status: 'completed', units: 2.74, buyerId: '**KMVCT', rate: 5.02 },
+  { id: '1', timeslot: '06 - 07', status: 'delivered', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
+  { id: '2', timeslot: '06 - 07', status: 'delivered', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
+  { id: '3', timeslot: '06 - 07', status: 'delivered', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
+  { id: '4', timeslot: '06 - 07', status: 'delivered', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
+  { id: '5', timeslot: '07 - 08', status: 'delivered', units: 2.74, buyerId: '**KMVCT', rate: 5.02 },
   { id: '6', timeslot: '08 - 09', status: 'delivered', units: 4.92, buyerId: '**PS57C', rate: 7.49 },
   { id: '7', timeslot: '09 - 10', status: 'delivered', units: 8.83, buyerId: 'SG Sell', rate: 9.28 },
   { id: '8', timeslot: '10 - 11', status: 'delivered', units: 8.83, buyerId: 'SG Sell', rate: 9.28 },
-  { id: '9', timeslot: '11 - 12', status: 'ongoing', units: 9.94, buyerId: '**SOQL0N', rate: 0.53 },
+  { id: '9', timeslot: '11 - 12', status: 'in_progress', units: 9.94, buyerId: '**SOQL0N', rate: 0.53 },
   { id: '10', timeslot: '12 - 13', status: 'scheduled', units: 5.36, buyerId: '**VLA6A', rate: 5.64 },
   { id: '11', timeslot: '13 - 14', status: 'scheduled', units: 5.36, buyerId: '**VLA6A', rate: 5.64 },
   { id: '12', timeslot: '14 - 15', status: 'scheduled', units: 1.54, buyerId: '**S2XA0L', rate: 1.74 },
@@ -40,13 +40,13 @@ export const todaysTrades: Trade[] = [
 
 // Tomorrow's Trades
 export const tomorrowsTrades: Trade[] = [
-  { id: '1', timeslot: '06 - 07', status: 'delivered', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
-  { id: '2', timeslot: '07 - 08', status: 'delivered', units: 6.47, buyerId: '**KMVCT', rate: 5.02 },
-  { id: '3', timeslot: '08 - 09', status: 'delivered', units: 4.92, buyerId: '**PS57C', rate: 7.49 },
-  { id: '4', timeslot: '10 - 11', status: 'delivered', units: 8.83, buyerId: 'SG Sell', rate: 9.28 },
-  { id: '5', timeslot: '11 - 12', status: 'searching', units: 6.47, buyerId: '-', rate: 0 },
+  { id: '1', timeslot: '06 - 07', status: 'committed', units: 6.47, buyerId: '**KEBWHT', rate: 4.25 },
+  { id: '2', timeslot: '07 - 08', status: 'committed', units: 6.47, buyerId: '**KMVCT', rate: 5.02 },
+  { id: '3', timeslot: '08 - 09', status: 'committed', units: 4.92, buyerId: '**PS57C', rate: 7.49 },
+  { id: '4', timeslot: '10 - 11', status: 'committed', units: 8.83, buyerId: 'SG Sell', rate: 9.28 },
+  { id: '5', timeslot: '11 - 12', status: 'ai_check', units: 6.47, buyerId: '-', rate: 0 },
   { id: '6', timeslot: '12 - 13', status: 'scheduled', units: 5.36, buyerId: '**VLA6A', rate: 5.64 },
-  { id: '7', timeslot: '13 - 14', status: 'scheduled', units: 5.36, buyerId: '**VLA6A', rate: 5.64 },
+  { id: '7', timeslot: '13 - 14', status: 'initiated', units: 5.36, buyerId: '**VLA6A', rate: 5.64 },
   { id: '8', timeslot: '14 - 15', status: 'scheduled', units: 1.54, buyerId: '**S2XA0L', rate: 1.74 },
   { id: '9', timeslot: '15 - 16', status: 'scheduled', units: 1.30, buyerId: '**D35389', rate: 9.56 },
   { id: '10', timeslot: '16 - 17', status: 'scheduled', units: 1.96, buyerId: '**FX48YU', rate: 3.85 },
@@ -89,9 +89,10 @@ export const currentBidsData: TimeslotBids[] = [
 export const historyData: HistoryItem[] = [
   { id: '1', date: '04/02/26', timeslot: '07 - 08', committed: 5, tariff: 6, transferred: 5, received: 30, status: 'fully_fulfilled', buyerId: 'XX67889' },
   { id: '2', date: '04/02/26', timeslot: '08 - 09', committed: 10, tariff: 7, transferred: 7, received: 49, status: 'partially_fulfilled', buyerId: 'XX67889' },
-  { id: '3', date: '04/02/26', timeslot: '09 - 10', committed: 15, tariff: 4, transferred: 15, received: 60, status: 'fully_fulfilled', buyerId: 'XX67889' },
+  { id: '3', date: '04/02/26', timeslot: '09 - 10', committed: 15, tariff: 4, transferred: 15, received: 60, status: 'delivered', buyerId: 'XX67889' },
   { id: '4', date: '04/02/26', timeslot: '09 - 10', committed: 20, tariff: 4, transferred: 0, received: 0, status: 'failed', buyerId: 'XX67889' },
-  { id: '5', date: '05/02/26', timeslot: '09 - 10', committed: 20, tariff: 4, transferred: 0, received: 0, status: 'failed', buyerId: 'XX67889' },
+  { id: '5', date: '05/02/26', timeslot: '09 - 10', committed: 20, tariff: 4, transferred: 0, received: 0, status: 'disputed', buyerId: 'XX67889' },
+  { id: '6', date: '05/02/26', timeslot: '09 - 10', committed: 20, tariff: 4, transferred: 0, received: 0, status: 'settled', buyerId: 'XX67889' },
 ];
 
 // Strategies

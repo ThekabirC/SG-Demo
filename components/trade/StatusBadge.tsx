@@ -8,13 +8,17 @@ interface StatusBadgeProps {
 }
 
 const statusConfig: Record<string, { label: string; className: string }> = {
-  completed: {
-    label: 'Completed',
+  committed: {
+    label: 'Committed',
     className: 'bg-green-100 text-green-700',
+  },
+  initiated: {
+    label: 'Initiated',
+    className: 'bg-yellow-100 text-yellow-700',
   },
   delivered: {
     label: 'Delivered',
-    className: 'bg-green-100 text-green-700',
+    className: 'border border-green-700 bg-green-100 text-green-700',
   },
   ongoing: {
     label: '+ Ongoing',
@@ -22,11 +26,11 @@ const statusConfig: Record<string, { label: string; className: string }> = {
   },
   scheduled: {
     label: 'Scheduled',
-    className: 'bg-primary-100 text-primary-700',
+    className: 'border border-green-700 text-green-700 bg-transparent',
   },
-  searching: {
-    label: 'Searching',
-    className: 'bg-primary-100 text-primary-700',
+  ai_check: {
+    label: 'AI Check',
+    className: 'bg-purple-100 text-purple-700',
   },
   settled: {
     label: 'Settled',
@@ -34,7 +38,7 @@ const statusConfig: Record<string, { label: string; className: string }> = {
   },
   disputed: {
     label: 'Disputed',
-    className: 'bg-amber-100 text-amber-700',
+    className: 'bg-red-100 text-red-700',
   },
   fully_fulfilled: {
     label: 'Fully fulfilled',
@@ -47,6 +51,10 @@ const statusConfig: Record<string, { label: string; className: string }> = {
   failed: {
     label: 'Failed',
     className: 'bg-orange-100 text-orange-700',
+  },
+  in_progress: {
+    label: '+ In Progress',
+    className: 'bg-primary-100 text-primary-700',
   },
 };
 

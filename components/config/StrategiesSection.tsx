@@ -25,27 +25,32 @@ export default function StrategiesSection() {
   };
 
   return (
-    <div className="config-card bg-white rounded-xl shadow-card p-5 h-[calc(100vh-92px)]">
-      <h2 className="text-base font-semibold text-gray-900 mb-4">Strategies</h2>
-
-      {/* Strategy Cards */}
-      <div className="space-y-3">
-        {strategies.map((strategy) => (
-          <StrategyCard key={strategy.id} strategy={strategy} />
-        ))}
+    <div className="config-card bg-white rounded-xl shadow-card p-5 h-[calc(100vh-92px)] flex flex-col">
+      {/* Top Section Wrapper */}
+      <div className="flex-1">
+        <h2 className="text-base font-semibold text-gray-900 mb-4">Strategies</h2>
+  
+        {/* Strategy Cards */}
+        <div className="space-y-3">
+          {strategies.map((strategy) => (
+            <StrategyCard key={strategy.id} strategy={strategy} />
+          ))}
+        </div>
+  
+        {/* Add Strategy Button */}
+        <button
+          onClick={handleAddStrategy}
+          className="flex items-center gap-2 text-primary font-medium text-sm mt-4 hover:text-primary-dark transition-colors"
+        >
+          <Plus size={14} />
+          Add strategy
+        </button>
       </div>
-
-      {/* Add Strategy Button */}
-      <button
-        onClick={handleAddStrategy}
-        className="flex items-center gap-2 text-primary font-medium text-sm mt-4 hover:text-primary-dark transition-colors"
-      >
-        <Plus size={14} />
-        Add strategy
-      </button>
-
-      {/* API Key Input */}
-      <ApiKeyInput />
+  
+      {/* API Key Input - Pushed to bottom */}
+      <div className="mt-auto pt-4">
+        <ApiKeyInput />
+      </div>
     </div>
   );
 }

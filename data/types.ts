@@ -6,7 +6,7 @@ export interface Project {
 }
 
 // Trade types
-export type TradeStatus = 'completed' | 'delivered' | 'ongoing' | 'scheduled' | 'searching';
+export type TradeStatus = 'committed' | 'delivered' | 'ongoing' | 'in_progress' | 'scheduled' | 'ai_check' | 'initiated' | 'disputed';
 
 export interface Trade {
   id: string;
@@ -35,7 +35,7 @@ export interface TimeslotBids {
 }
 
 // History types
-export type HistoryStatus = 'fully_fulfilled' | 'partially_fulfilled' | 'failed';
+export type HistoryStatus = 'fully_fulfilled' | 'partially_fulfilled' | 'failed' | 'disputed';
 
 export interface HistoryItem {
   id: string;

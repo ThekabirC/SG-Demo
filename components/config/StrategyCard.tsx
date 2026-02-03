@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Settings, ChevronDown, Star, Trash2 } from 'lucide-react';
+import { Settings, ChevronDown, Star, Trash2, Orbit, SunMedium } from 'lucide-react';
 import { Strategy } from '@/data/types';
 import { useStrategy } from '@/contexts/StrategyContext';
 
@@ -71,19 +71,19 @@ export default function StrategyCard({ strategy }: StrategyCardProps) {
   };
 
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden">
+    <div className="border-2 border-purple-200 rounded-[24] overflow-hidden">
       {/* Header */}
       <button
         onClick={() => toggleStrategyExpanded(strategy.id)}
-        className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center gap-2 p-3 hover:bg-gray-50 transition-colors"
       >
-        <Settings size={18} className="text-gray-400" />
+        <Orbit size={18} className="text-[#0B2742]" />
         <span className="flex-1 text-left font-medium text-gray-900">
           {strategy.name} - {strategy.subtitle}
         </span>
         <ChevronDown
           size={18}
-          className={`text-gray-400 transition-transform ${
+          className={`text-[#0B2742] transition-transform ${
             strategy.isExpanded ? 'rotate-180' : ''
           }`}
         />
@@ -161,9 +161,9 @@ export default function StrategyCard({ strategy }: StrategyCardProps) {
           </div>
 
           {/* Fallback Banner */}
-          <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg text-sm text-gray-700">
-            <Star size={16} className="text-yellow-500" />
-            <span>Sell to SG @ ₹ 5.5 / kwh on fallback</span>
+          <div className="flex items-center gap-2 p-3 bg-yellow-50 rounded-lg text-sm text-gray-700">
+            <SunMedium size={24} className="text-amber-500" />
+            <span className="text-sm font-medium text-[#2C2E38]">Sell to SG @ ₹ 5.5 / kwh on fallback</span>
           </div>
 
           {/* Action Buttons */}

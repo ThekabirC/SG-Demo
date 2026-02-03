@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#14B8A6",
+          DEFAULT: "#035951",
           light: "#D1FAE5",
           dark: "#0D9488",
           50: "#F0FDFA",
@@ -32,7 +32,7 @@ const config: Config = {
           DEFAULT: "#F59E0B",
           light: "#FEF3C7",
         },
-        background: "#F3F4F6",
+        background: "#EEEEEE",
         card: "#FFFFFF",
         border: {
           DEFAULT: "#E5E7EB",
@@ -40,7 +40,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Poppins", "system-ui", "sans-serif"],
       },
       spacing: {
         "sidebar": "60px",
