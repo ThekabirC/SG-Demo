@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sidebar-width: 60px;
+  --header-height: 60px;
+  --card-width: 460px;
+  --card-gap: 16px;
+}
+
+/* Prevent body scroll */
+html,
+body {
+  overflow: hidden;
+  height: 100vh;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+/* Trade page horizontal scroll */
+.trade-page {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: var(--card-gap);
+  padding: 16px;
+  height: calc(100vh - var(--header-height));
+}
+
+/* Trade cards - vertical scroll with hidden scrollbar */
+.trade-card {
+  flex-shrink: 0;
+  width: var(--card-width);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.trade-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Config cards - vertical scroll with hidden scrollbar */
+.config-card {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.config-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for trade page horizontal scroll */
+.trade-page::-webkit-scrollbar {
+  height: 8px;
+}
+
+.trade-page::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.trade-page::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.trade-page::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* No scrollbar utility */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: #EEEEEE;
+  z-index: 50;
+}
