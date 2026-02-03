@@ -42,6 +42,19 @@ body {
   display: none;
 }
 
+/* Wide trade card for History section */
+.trade-card-wide {
+  flex-shrink: 0;
+  width: 680px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.trade-card-wide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Config cards - vertical scroll with hidden scrollbar */
 .config-card {
   overflow-y: auto;

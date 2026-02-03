@@ -5,53 +5,95 @@ import { historyData } from '@/data/dummyData';
 import StatusBadge from './StatusBadge';
 
 export default function HistoryCard() {
+  // Group history items by date
+  const groupedByDate: Record<string, typeof historyData> = {};
+  historyData.forEach((item) => {
+    if (!groupedByDate[item.date]) {
+      groupedByDate[item.date] = [];
+    }
+    groupedByDate[item.date].push(item);
+  });
+
+  const dates = Object.keys(groupedByDate);
+
   return (
-    <div className="trade-card bg-white rounded-xl shadow-card h-[calc(100vh-92px)]">
+    <div className="trade-card-wide bg-white rounded-xl shadow-card h-[calc(100vh-92px)]">
       {/* Header */}
-      <div className="sticky top-0 bg-white px-4 pt-4 pb-3 border-b border-gray-200 rounded-t-xl z-10">
+      <div className="sticky top-0 bg-white px-6 pt-4 pb-3 border-b border-gray-200 rounded-t-xl z-10">
         <h2 className="text-base font-semibold text-gray-900">History</h2>
         
         {/* Column Headers */}
         <div className="flex items-center mt-4 text-xs text-gray-400 font-medium uppercase tracking-wide">
           <div className="w-[100px]">Time Slot</div>
-          <div className="w-[80px]">Status</div>
-          <div className="w-[90px]">Units</div>
-          <div className="flex-1 text-right">Avg Rate ₹/kWh</div>
+          <div className="w-[90px]">Committed</div>
+          <div className="w-[80px]">Tariff</div>
+          <div className="w-[100px]">Transferred</div>
+          <div className="w-[80px]">Received</div>
+          <div className="w-[130px]">Status</div>
+          <div className="flex-1 text-right">Buyer ID</div>
         </div>
       </div>
 
       {/* Content */}
       <div className="px-0 py-1">
-        {historyData.map((item, index) => (
-          <div
-            key={item.id}
-            className={`
-              flex items-center px-4 py-3 text-sm
-              ${index !== historyData.length - 1 ? 'border-b border-gray-100' : ''}
-            `}
-          >
-            {/* Day */}
-            <div className="w-[100px] font-medium text-gray-900">
-              {item.day}
-            </div>
+        {dates.map((date) => {
+          const items = groupedByDate[date];
+          
+          return (
+            <div key={date}>
+              {/* Date Header */}
+              <div className="px-6 py-3 text-sm font-medium text-gray-900">
+                {date}
+              </div>
 
-            {/* Status */}
-            <div className="w-[80px]">
-              <StatusBadge status={item.status} />
-            </div>
+              {/* Rows for this date */}
+              {items.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`
+                    flex items-center px-6 py-3 text-sm
+                    ${index !== items.length - 1 ? 'border-b border-gray-100' : ''}
+                  `}
+                >
+                  {/* Time Slot */}
+                  <div className="w-[100px] text-gray-700">
+                    {item.timeslot}
+                  </div>
 
-            {/* Units */}
-            <div className="w-[90px]">
-              <div className="font-medium text-gray-900">{item.units.toFixed(2)} kWh</div>
-              <div className="text-xs text-gray-500">Produced</div>
-            </div>
+                  {/* Committed */}
+                  <div className="w-[90px] font-medium text-gray-900">
+                    {item.committed.toString().padStart(2, '0')} kWh
+                  </div>
 
-            {/* Avg Rate */}
-            <div className="flex-1 text-right font-medium text-gray-900">
-              ₹{item.avgRate.toFixed(2)}
+                  {/* Tariff */}
+                  <div className="w-[80px] text-gray-700">
+                    ₹{item.tariff}/kWh
+                  </div>
+
+                  {/* Transferred */}
+                  <div className="w-[100px] font-medium text-gray-900">
+                    {item.transferred.toString().padStart(2, '0')} kWh
+                  </div>
+
+                  {/* Received */}
+                  <div className="w-[80px] text-gray-700">
+                    ₹{item.received}
+                  </div>
+
+                  {/* Status */}
+                  <div className="w-[130px]">
+                    <StatusBadge status={item.status} />
+                  </div>
+
+                  {/* Buyer ID */}
+                  <div className="flex-1 text-right font-mono text-gray-700">
+                    {item.buyerId}
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

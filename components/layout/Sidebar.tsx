@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -13,39 +14,16 @@ export default function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 h-screen w-[60px] bg-white border-r border-gray-100 flex flex-col items-center py-4 z-50">
       {/* Logo */}
-      <div className="mb-8">
-        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 2L2 7L12 12L22 7L12 2Z"
-              stroke="#14B8A6"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M2 17L12 22L22 17"
-              stroke="#14B8A6"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M2 12L12 17L22 12"
-              stroke="#14B8A6"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-      </div>
+
+     <div className="mb-8 flex items-center justify-center">
+      <Image
+        src="/assets/logo.png"
+        alt="Logo"
+        width={32}
+        height={32}
+        priority
+      />
+    </div>
 
       {/* Navigation Icons */}
       <nav className="flex-1 flex flex-col items-center gap-3 mt-4">
@@ -78,12 +56,14 @@ export default function Sidebar() {
         </Link>
       </nav>
 
-      {/* User Icon */}
+      {/* User Icon 
       <div className="mt-auto mb-2">
         <button className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white hover:bg-primary-dark transition-colors">
           <User size={18} />
         </button>
       </div>
+      */}
     </aside>
+
   );
 }

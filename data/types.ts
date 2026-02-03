@@ -35,14 +35,18 @@ export interface TimeslotBids {
 }
 
 // History types
-export type HistoryStatus = 'settled' | 'disputed';
+export type HistoryStatus = 'fully_fulfilled' | 'partially_fulfilled' | 'failed';
 
 export interface HistoryItem {
   id: string;
-  day: string;
-  status: HistoryStatus;
-  units: number;
-  avgRate: number;
+  date: string;           // Group header like "04/02/26"
+  timeslot: string;       // "07:00 - 08:00"
+  committed: number;      // kWh committed
+  tariff: number;         // ₹/kWh
+  transferred: number;    // kWh transferred
+  received: number;       // ₹ amount
+  status: HistoryStatus;  // Fully fulfilled, Partially fulfilled, Failed
+  buyerId: string;        // "XX67889"
 }
 
 // Strategy types

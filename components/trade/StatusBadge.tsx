@@ -36,6 +36,18 @@ const statusConfig: Record<string, { label: string; className: string }> = {
     label: 'Disputed',
     className: 'bg-amber-100 text-amber-700',
   },
+  fully_fulfilled: {
+    label: 'Fully fulfilled',
+    className: 'bg-green-100 text-green-700',
+  },
+  partially_fulfilled: {
+    label: 'Partially fulfilled',
+    className: 'bg-amber-100 text-amber-700',
+  },
+  failed: {
+    label: 'Failed',
+    className: 'bg-orange-100 text-orange-700',
+  },
 };
 
 export default function StatusBadge({ status }: StatusBadgeProps) {
@@ -43,7 +55,7 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${config.className}`}
+      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ${config.className}`}
     >
       {config.label}
     </span>

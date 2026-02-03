@@ -87,13 +87,11 @@ export const currentBidsData: TimeslotBids[] = [
 
 // History
 export const historyData: HistoryItem[] = [
-  { id: '1', day: 'Monday', status: 'settled', units: 95.75, avgRate: 4.25 },
-  { id: '2', day: 'Tuesday', status: 'disputed', units: 39.78, avgRate: 5.02 },
-  { id: '3', day: 'Wednesday', status: 'settled', units: 27.94, avgRate: 7.49 },
-  { id: '4', day: 'Thursday', status: 'settled', units: 59.75, avgRate: 9.28 },
-  { id: '5', day: 'Friday', status: 'settled', units: 20.85, avgRate: 0.53 },
-  { id: '6', day: 'Saturday', status: 'settled', units: 44.73, avgRate: 5.64 },
-  { id: '7', day: 'Sunday', status: 'settled', units: 76.69, avgRate: 5.64 },
+  { id: '1', date: '04/02/26', timeslot: '07 - 08', committed: 5, tariff: 6, transferred: 5, received: 30, status: 'fully_fulfilled', buyerId: 'XX67889' },
+  { id: '2', date: '04/02/26', timeslot: '08 - 09', committed: 10, tariff: 7, transferred: 7, received: 49, status: 'partially_fulfilled', buyerId: 'XX67889' },
+  { id: '3', date: '04/02/26', timeslot: '09 - 10', committed: 15, tariff: 4, transferred: 15, received: 60, status: 'fully_fulfilled', buyerId: 'XX67889' },
+  { id: '4', date: '04/02/26', timeslot: '09 - 10', committed: 20, tariff: 4, transferred: 0, received: 0, status: 'failed', buyerId: 'XX67889' },
+  { id: '5', date: '05/02/26', timeslot: '09 - 10', committed: 20, tariff: 4, transferred: 0, received: 0, status: 'failed', buyerId: 'XX67889' },
 ];
 
 // Strategies
